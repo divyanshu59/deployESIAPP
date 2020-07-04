@@ -1,0 +1,208 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="heading-container">
+  <h1>Tournament</h1>
+</div>
+
+<div class="main-container">
+
+  <div class="tournamentbg">
+
+  </div>
+
+  <div class="tournament-card">
+    <div class="small-bg">
+      <img src="{% static 'smallbg.png' %}" alt="bg-logo" width="100%" height="100%">
+    </div>
+    <div class="tournament-name">
+      <h3>{{ data.game }}</h3>
+      <h1>{{ data.name }}</h1>
+      <h2>{{ data.registrationLimit }} teams</h2>
+      <h2>From {{ startDate }}</h2>
+    </div>
+  </div>
+
+  <div class="navTm">
+    <li><a onclick="myFunction5()">Description</a></li>
+    <li><a id="about" onclick="myFunction()">About</a></li>
+    <li><a id="rules" onclick="myFunction1()">Rules</a></li>
+    <li><a  onclick="myFunction2()">Prizes</a></li>
+    <li><a onclick="myFunction3()">Schedules</a></li>
+    <li><a onclick="myFunction4()">Contact Info</a></li>
+  </div>
+  <div class="desc" id="descC">
+    <p>{{ data.description }}</p>
+  </div>
+  <div class="about" id="aboutC">
+    <p>Tournament Format: {{ data.tournamentFormat }}</p>
+    <p>Total Slots: {{ data.registrationLimit }}</p>
+    {% if data.teamTagRequired == 1 %}
+    <p>Team Tag Required: Yes</p>
+    {% else %}
+    <p>Team Tag Required: No</p>
+    {% endif %}
+    <p>Start: {{startDate}}  {{data.startTime}}</p>
+    <p>Start Time: No</p>
+    <br> 
+    <p>{{ data.about }}</p>
+
+  </div>
+  <div class="rules" id="rulesC">
+    <p>{{ data.rules }}</p>
+  </div>
+  <div class="prizes" id="prizesC">
+    <p>{{ data.prizes }}</p>
+  </div>
+  <div class="schedule" id="scheduleC">
+    <p>{{ data.schedule }}</p>
+  </div>
+  <div class="contact" id="contactC">
+    <p>{{ data.contactDetails }}</p>
+  </div>
+
+  {% if data.statuscode == 2 %}
+  <div class="register-nav" onclick="showForm()">
+    <h3>Register</h3>
+    <a href="#" id="one">+</a>
+  </div>
+  <div class="register-nav" id="formData" style="display: none;">
+    <form action="" method="POST" name='tournamentRegister' enctype='multipart/form-data'>
+      {% csrf_token %}
+      <h1>Registration</h1>
+      <h1>{{ msg }}</h1>
+      <div>
+      <input type="hidden" name='tournamentID' value="{{ data.id }}">
+      <input type="hidden" name='userID' value= "{{ uid }}">
+      {% if teamMembers.teamName == 1 %}
+      <div class="labelForForm"><label for="">Team Name</label></div>
+      <input type="text" placeholder="Team Name" name='teamName' class="tournamentInpt">
+      <br>
+      {% endif %}
+
+      {% if teamMembers.teamCountry == 1 %}
+      <div class="labelForForm"><label for="" class="labelForm">Team Country</label></div>
+      <input type="text" placeholder="Team Country" name='teamCountry' class="tournamentInpt">
+      <br>
+      {% endif %}
+      {% if teamMembers.teamLogo == 1 %}
+      <div class="labelForForm"><label for="">Team Logo</label></div>
+      <input type="file" placeholder="name" name='teamLogo' class="tournamentInpt" accept="">
+      <br>
+      {% endif %}
+      {% if teamMembers.teamNumber == 1 %}
+      <div class="labelForForm"><label for="">Team Number(Captain)</label></div>
+      <input type="text" placeholder="Team Number" name='teamNumber' class="tournamentInpt">
+      <br>
+      {% endif %}
+      {% if teamMembers.teamEmail == 1 %}
+      <div class="labelForForm"><label for="">Team Email(Captain)</label></div>
+      <input type="email" placeholder="Team email" name='teamEmail' class="tournamentInpt" accept="">
+      <br>
+      </div>
+      {% endif %}
+      <h2>Team Member #1(Captain)</h2>
+                    
+      {% if teamMembers.iglIGN == 1 %}
+      <div>
+      <div class="labelForForm"><label for="">IGN</label></div>
+      <input type="text" placeholder="IGN" name='iglIGN' class="tournamentInpt">
+      <br>
+      {% endif %}
+      {% if teamMembers.iglCharID == 1 %}
+      <div class="labelForForm"><label for="">Character Id</label></div>
+      <input type="text" placeholder="Character Id" name='iglCharID' class="tournamentInpt">
+      <br>
+      {% endif %}
+      
+      {% if teamMembers.iglDiscord == 1 %}
+      <div class="labelForForm"><label for="">Discord</label></div>
+      <input type="text" placeholder="Discord" name='iglDiscord' class="tournamentInpt">
+      <br>
+      {% endif %}
+      {% if teamMembers.iglRealName == 1 %}
+      <div class="labelForForm"><label for="">Real Name</label></div>
+      <input type="text" placeholder="Real Name" name='iglRealName' class="tournamentInpt">
+      <br>
+      </div>
+      {% endif %}
+
+
+      <div class="player-divider">
+      {% for team in list %}
+      <div>
+      <h2>Team Member #{{team}}</h2>
+
+      {% if teamMembers.playerIGN == 1 %}
+      <div class="labelForForm"><label for="">IGN</label></div>
+      <input type="text" placeholder="IGN" name='player{{ team }}IGN' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="IGN" name='player{{ team }}IGN' class="tournamentInpt" value="">
+      {% endif %}
+      {% if teamMembers.playerCharID == 1 %}
+      <div class="labelForForm"><label for="">Character Id</label></div>
+      <input type="text" placeholder="Character Id" name='player{{ team }}CharID' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="IGN" name='player{{ team }}CharID' class="tournamentInpt" value="">
+      {% endif %}
+      {% if teamMembers.playerEmail == 1 %}
+      <div class="labelForForm"><label for="">Email</label></div>
+      <input type="text" placeholder="Email" name='player{{ team }}Email' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="Email" name='player{{ team }}Email' class="tournamentInpt" value="">
+      {% endif %}
+      {% if teamMembers.playerNumber == 1 %}
+      <div class="labelForForm"><label for="">Number</label></div>
+      <input type="text" placeholder="Number" name='player{{ team }}Number' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="IGN" name='player{{ team }}Number' class="tournamentInpt" value="">
+      {% endif %}
+      {% if teamMembers.playerDiscord == 1 %}
+      <div class="labelForForm"><label for="">Discord</label></div>
+      <input type="text" placeholder="Discord" name='player{{ team }}Discord' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="IGN" name='player{{ team }}Discord' class="tournamentInpt" value="">
+      {% endif %}
+      {% if teamMembers.playerCountry == 1 %}
+      <div class="labelForForm"><label for="">Country</label></div>
+      <input type="text" placeholder="Country" name='player{{ team }}Country' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="IGN" name='player{{ team }}Country' class="tournamentInpt" value="">
+      {% endif %}
+      {% if teamMembers.playerRealName == 1 %}
+      <div class="labelForForm"><label for="">Real Name</label></div>
+      <input type="text" placeholder="Real Name" name='player{{ team }}RealName' class="tournamentInpt">
+      <br>
+      {% else %}
+      <input type="hidden" placeholder="IGN" name='player{{ team }}RealName' class="tournamentInpt" value="">
+      {% endif %}
+      
+      </div>
+      {% endfor %}
+      </div>
+
+        <input type="hidden" name="player5RealName" value ="">
+        <input type="hidden" name="player5Country" value ="">
+        <input type="hidden" name="player5Email" value ="">
+        <input type="hidden" name="player5Number" value ="">
+        <input type="hidden" name="player5Discord" value ="">
+        <input type="hidden" name="player5IGN" value ="Anonmous">
+        <input type="hidden" name="player5CharID" value ="100">
+      
+
+    <button id="submitBtn">Submit</button>
+    </form>
+
+    {% endif %}
+  </div>
+
+</div>
+
+{% endblock content %}

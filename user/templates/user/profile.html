@@ -1,0 +1,107 @@
+{% extends 'user/base.html' %} {% load static %} {% block content %}
+<div class="heading-container">
+    <h1 id="profile-heading">PROFILE</h1>
+</div>
+<form action="" method="POST" enctype="multipart/form-data" name='userInfoForm'>
+    {% csrf_token %}
+    <div class="profile-container">
+
+        <div class="info-container">
+            <div class="form-user">
+                <div class="profile-pic">
+                    <img src="{{ data.data.profile }}" alt="profile-pic" width="100%" height="100%">
+                </div>
+                <input style="display: none;" type="file" name='profile'>
+                <input type="text" value="{{ data.data.name }}" class="input-userForm" name='username' required>
+                <br>
+                <input type="email" value="{{ data.data.email}}" class="input-userForm" name='email' required>
+                <br>
+                <input type="text" value="{{ data.data.phone }}" class="input-userForm" name='phone' disabled>
+
+                <input type="hidden" name="id" value="{{ data.data.id }}">
+                <input type="hidden" name="profileimg" value="{{ data.data.profile }}">
+                <button id="updateBtn" style="border-radius: 4px; font-weight: bold;">Update Profile</button>
+            </div>
+        </div>
+        <center>
+            <div class="user-address">
+                <div class="adCard" style="text-align: left;">
+                    <h1>Address</h1>
+                    <span style="font-size: 20px;"><b>City </b>-{{ data.data.subdata.city}}</span>
+                    <br>
+                    <span style="font-size: 20px;"><b>Address </b>-{{ data.data.subdata.address }}</span>
+                    <br>
+                    <span style="font-size: 20px;"><b>Pincode Or ZipCode </b>-{{ data.data.subdata.pincode }}</span>
+                    <br>
+                    <span style="font-size: 20px;"><b>Country </b>-{{ data.data.subdata.country}}</span>
+                </div>
+                <div class="adCard" style="text-align: left;">
+                    <h1>Billing Details</h1>
+                    <h3 style="color: green;">ESI SPLUS</h3>
+                    <span style="font-size: 20px;"><b>Billing-cycle </b>{{data.data.subdata.billingCycleText}}</span><br>
+                    <span style="font-size: 20px;"><b>Re-New Date </b>{{renewDate}}</span><br>
+                    <span style="font-size: 20px;"><b>Payment-Method </b>{{ data.data.subdata.paymentMethod }}</span><br>
+
+                </div>
+
+            </div>
+
+            <div class="user-address-mob">
+                <div class="adCard" style="text-align: left;">
+                    <h1>Address</h1>
+                    <span style="font-size: 20px;"><b>City </b>-{{ data.data.subdata.city}}</span>
+                    <br>
+                    <span style="font-size: 20px;"><b>Address </b>-{{ data.data.subdata.address }}</span>
+                    <br>
+                    <span style="font-size: 20px;"><b>Pincode Or ZipCode </b>-{{ data.data.subdata.pincode }}</span>
+                    <br>
+                    <span style="font-size: 20px;"><b>Country </b>-{{ data.data.subdata.country}}</span>
+                </div>
+                <div class="adCard" style="text-align: left;">
+                    <h1>Billing Details</h1>
+                    <h3 style="color: green;">ESI SPLUS</h3>
+                    <span style="font-size: 20px;"><b>Billing-cycle </b>{{data.data.subdata.billingCycleText}}</span><br>
+                    <span style="font-size: 20px;"><b>Re-New Date </b>{{renewDate}}</span><br>
+                    <span style="font-size: 20px;"><b>Payment-Method </b>{{ data.data.subdata.paymentMethod }}</span><br>
+
+                </div>
+
+            </div>
+            <br><br>
+        </center>
+
+    </div>
+
+</form>
+
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js">
+</script>
+<script>
+    $(document).ready(function() {
+        $('input[type="file"]').change(function() {
+            Fd = new FormData()
+
+            var file = $('input[type="file"]').val();
+            console.log(file);
+            Fd.append('image', file)
+            Fd.append('token', '11712f60-942d-49ff-b026-139dca2e0a39')
+
+
+            $.ajax({
+                url: "http://api.e-sportsindia.in/user/upload/img",
+                method: "POST",
+                contentType: false,
+                data: Fd,
+                success: function(result) {
+                    console.log(result)
+                }
+            });
+        });
+    });
+</script>
+
+
+{% endblock content %}

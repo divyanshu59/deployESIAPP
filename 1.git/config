@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/avi1737/eSportsIndia
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[remote "clever"]
+	url = git+ssh://git@push-par-clevercloud-customers.services.clever-cloud.com/app_1525dd43-afb7-48ae-8961-b51223d6be24.git
+	fetch = +refs/heads/*:refs/remotes/clever/*

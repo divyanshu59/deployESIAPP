@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.banner {
+    width: 74%;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    background-image: url(banner.png);
+    background-repeat: none;
+    background-size: cover;
+}
+
+.right-side {
+    width: 26%;
+    position: relative;
+}
+
+.banner h1 {
+    font-size: 4.5rem;
+    color: white;
+    font-family: Slackey, cursive;
+    margin: 35vh auto;
+    padding-left: 100px;
+    width: 800px;
+}
+
+.form-container {
+    width: 368px;
+    height: 280px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 24%;
+    left: 0;
+    transform: translate(-24%, 0%);
+    padding: 0 1rem;
+}
+
+.myfieldclass {
+    width: 100%;
+    padding: 0.4em 1em;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    border: none;
+    margin: 1.2rem 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+#imglogo {
+    display: block;
+    margin: auto;
+}
+
+.main-btn {
+    background-color: #FDC603;
+    width: 336px;
+    height: 39px;
+    border-radius: 27px;
+    color: black;
+    border: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+@media screen and (max-width:576px) {
+    .container {
+        flex-direction: column;
+        height: 100vh;
+        display: flex;
+        overflow: hidden;
+    }
+    .banner {
+        width: 100%;
+        height: auto;
+        background-image: url(bannermob.png);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        background-size: cover;
+    }
+    .banner h1 {
+        font-size: 1.8rem;
+        color: white;
+        font-family: Slackey, cursive;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        width: 220px;
+        padding-left: 0;
+    }
+    .right-side {
+        align-items: center;
+        width: 100%;
+        position: relative;
+        height: 550px;
+        margin: 20px auto;
+    }
+    .form-container {
+        position: absolute;
+        top: -5%;
+        width: 80%;
+        transform: none;
+        height: 299px;
+        left: unset;
+        margin-left: 10%;
+    }
+    .main-btn {
+        width: 80%;
+        margin: 0px auto;
+        height: 30px;
+    }
+}

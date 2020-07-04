@@ -1,0 +1,17 @@
+{% extends 'user/base.html' %} {% block content %}
+<div class="heading-container">
+    <h1 id="profile-heading">Practice Scrims</h1>
+</div>
+
+<div class="profile-container">
+    <div class="form-299">
+        <p>GET SUPER+ PLAN</p>
+        <p id="small-txt">Play Custom Everyday- 4 Match A Day, 120 Match Per Month, 1 Tournament End of Month With Prizes</p>
+        <form action="" method="POST">
+            {% csrf_token %} {{ form.as_p }}
+            <button>Get Ready For Action</button>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

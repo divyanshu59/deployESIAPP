@@ -1,0 +1,9 @@
+{% extends 'registration/base.html' %} {% load static %} {% block content %}
+<p style="text-align: center;font-family: roboto,sans;font-size: 1.5rem;padding-top: 1rem;">Login</p>
+<p style="text-align: center;font-family: roboto,sans;font-size: 1.3rem;padding-top: 1rem;">An OTP is sent to +91 {{ phone }}</p>
+<form action="" method="POST">
+    {{ form.as_p }} {% csrf_token %}
+    <button class="main-btn">Login</button>
+</form>
+
+{% endblock content %}

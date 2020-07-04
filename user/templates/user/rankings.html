@@ -1,0 +1,267 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<div class="heading-container">
+    <h1 id="profile-heading">Rankings</h1>
+</div>
+<div class="profile-container">
+    <div class="filter-container" id="filter" onclick="filterOpen()"><p>Filter<i style='color:rgb(77, 64, 64);margin-left: 20px;' class="fa fa-filter" aria-hidden="true"></i></p>
+    </div>
+    <div class="week-year" id='ShowM' style="display: none;">
+        
+        <h2>Group
+            <div>
+                <select name="group" id="group">
+                    <option value="E1">Group E1</option>
+                    <option value="E2">Group E2</option>
+                    <option value="E3">Group E3</option>
+                    <option value="E4">Group E4</option>
+                </select>
+            </div>
+        </h2>
+        
+        <h2>Year
+            <div>
+                <select name="year" id="year">
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+        </h2>
+        <h2>Week
+            <div>
+                <select name="Week" id="week">
+                    <option value="1">Week 1</option>
+                    <option value="2">Week 2</option>
+                    <option value="3">Week 3</option>
+                    <option value="4">Week 4</option>
+                </select>
+            </div>
+        </h2>
+        <h2>Month
+            <div>
+                <select name="month" id="month">
+                    <option value="Jan">Jan</option>
+                    <option value="Feb">Feb</option>
+                    <option value="E3">Mar</option>
+                    <option value="E4">April</option>
+                    <option value="E1">May</option>
+                    <option value="E2">June</option>
+                    <option value="E3">July</option>
+                    <option value="E4">Aug</option>
+                    <option value="E1">Sept</option>
+                    <option value="E2">oct</option>
+                    <option value="E3">Nov</option>
+                    <option value="E4">Dec</option>
+                </select>
+            </div>
+        </h2>
+    </div>
+
+    <div class="ranking-tables">
+        <div class="scrim3">
+            <p>Weekly</p>
+            <table id="tables">
+                <tr>
+                    <th>Rank</th>
+                    <th>Team Name</th>
+                    <th>Point</th>
+                    <th>wwcd</th>
+                    <th>Kills</th>
+                </tr>
+                {% for week in week %}
+                <tr>
+                    <th id="rank">{{ week.rankId }}</th>
+                    <th id="team">{{ week.teamname }}</th>
+                    <th>{{week.point}}</th>
+                    <th>{{week.wwcd}}</th>
+                    <th>{{week.kills}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="scrim3">
+            <p>Monthly</p>
+            <table id="tablesnd">
+                <tr>
+                    <th>Rank</th>
+                    <th>Team Name</th>
+                    <th>Point</th>
+                    <th>wwcd</th>
+                    <th>Kills</th>
+                </tr>
+                {% for month in month %}
+                <tr>
+                    <th id="rank">{{ month.rankId }}</th>
+                    <th id="team">{{ month.teamname }}</th>
+                    <th>{{month.point}}</th>
+                    <th>{{month.wwcd}}</th>
+                    <th>{{month.kills}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<!---js for select-->
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+{% block javascript %}
+<script>
+     $grp = "E1";
+     $grp=$("#group").change(function () {
+        return $(this).val();
+    });
+    $month = "Jan";
+    $month = $("#month").change(function () {
+        return $(this).val()
+    });
+    $week = "1";
+    $week=$("#week").change(function () {
+       return $(this).val()
+    });
+    $year = "2020";
+    $year=$("#year").change(function () {
+       return $(this).val()
+    });
+
+
+$('#week').change(function(){
+    AjaxCall($week,$month,$grp,$year);
+});
+
+$('#month').change(function(){
+    AjaxCall($week,$month,$grp,$year);
+});
+
+$('#year').change(function(){
+    AjaxCall($week,$month,$grp,$year);
+});
+
+
+$('#group').change(function(){
+   AjaxCall($week,$month,$grp,$year);
+});
+
+function AjaxCall($week = 1,$month = 'Jan',$grp = 'E1',$year = '2020'){
+    var SendInfo = {
+	"week": $week[0]['value'],
+    "month": $month[0]['value'],
+    "year": $year[0]['value'],
+    "group":$grp[0]['value'],
+    "token":"11712f60-942d-49ff-b026-139dca2e0a39"
+        }
+        //console.log(SendInfo);
+    $.ajax({
+        url: 'http://api.e-sportsindia.in/user/rank/week/',
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(SendInfo),
+        success: function (data) {
+            console.log(data);
+            if(data == undefined){
+                $('#tables').html("<h3>No Ranking </h3>");
+            }
+            $('#tables').html("<tr><th>Rank</th><th>Team Name</th><th>Points</th><th>WWCD</th><th>Kills</th></tr>");
+            $(function() {
+                
+               $.each(data['data'], function(i, item) {
+                $player = ''; //  
+            /* var $tr = $('<tr>').append(
+            $('<td>').text(item.rankId),
+            $('<td>').text(item.teamname),
+            $('<td>').text(item.point),
+
+            $('<td>').text(item.wwcd),
+            $('<td>').text(item.kills),*/
+            $player += '<tr>';
+            $player += '<th>'+item.rankId+'</th>';
+            $player += '<th>'+item.teamname+'</th>';
+            $player += '<th>'+item.point+'</th>';
+            $player += '<th>'+item.wwcd+'</th>';
+            $player += '<th>'+item.kills+'</th>';
+            $player += '</tr>'; 
+        $('#tables').append($player);
+    });
+});
+          }
+        ,
+        error: function () {
+             alert('Error');
+            }
+      });
+ 
+    //2nd ajax func
+
+      $.ajax({
+        url: 'http://api.e-sportsindia.in/user/rank/month/',
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(SendInfo),
+        success: function (data) {
+            console.log(data['data']);
+            $('#tablesnd').html("<tr><th>Rank</th><th>Team Name</th><th>Points</th><th>WWCD</th><th>Kills</th></tr>");
+            $(function() {
+                
+               $.each(data['data'], function(i, item) {
+                $player = ''; //  
+            /* var $tr = $('<tr>').append(
+            $('<td>').text(item.rankId),
+            $('<td>').text(item.teamname),
+            $('<td>').text(item.point),
+
+            $('<td>').text(item.wwcd),
+            $('<td>').text(item.kills),*/
+            $player += '<tr>';
+            $player += '<th>'+item.rankId+'</th>';
+            $player += '<th>'+item.teamname+'</th>';
+            $player += '<th>'+item.point+'</th>';
+            $player += '<th>'+item.wwcd+'</th>';
+            $player += '<th>'+item.kills+'</th>';
+            $player += '</tr>'; 
+        $('#tablesnd').append($player);
+    });
+});
+          }
+        ,
+        error: function () {
+             alert('Error');
+            }
+      });
+
+
+}
+    
+
+/*filter js
+
+$( "#filter" ).click(function() {
+    $( "#ShowM" ).toggle();
+});
+
+*/
+
+function filterOpen(){
+    var x = document.getElementById("ShowM");
+  if (x.style.display === "none") {
+    x.style.display = "grid";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+
+</script>
+
+{% endblock %}
+
+{% endblock content %}

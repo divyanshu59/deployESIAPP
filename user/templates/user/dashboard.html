@@ -1,0 +1,26 @@
+{% extends 'user/base.html' %} {% block content %}
+<div class="heading-container">
+    <h1>Active Tournaments</h1>
+</div>
+<style>
+    @media (max-width: 600px) {
+        #mytournamentimages {
+            width: 90% !important;
+        }
+    }
+</style>
+
+<div class="Tournament-card" style="padding: 20px">
+    {% for datas in data.tor %}
+    <div style="display: inline-block; margin: 10px;">
+
+        <a href="{{ datas.url }}">
+            <center>
+                <img id="mytournamentimages" src="{{ datas.image }}" style="width: 200px;" alt="">
+            </center>
+        </a>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock content %}

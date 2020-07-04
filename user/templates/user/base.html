@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'dashboard.css'%}">
+    <link rel="stylesheet" href="{% static 'tournament.css'%}">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <button onclick="togglenav()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+    </header>
+
+    <nav id="navBar">
+        <img src="{% static 'gameLogo.png' %}" alt="logo">
+        <div class="nav-links">
+            <ul>
+                <li><a href="/user/auth/dashboard">Home</a></li>
+                <li><a href="/user/rankings/">Rankings</a></li>
+                <li><a href="/user/practiceScrims/">Practice Scrims</a></li>
+                <li><a href="">Video</a></li>
+                <li><a href="">News</a></li>
+                <li><a href="/user/notifications/">Notifications</a></li>
+                <li><a href="/user/profiles/">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div class="userinfo-container">
+            <h2 id="username">{{ username }}</h2>
+            <p id="useremail">{{ useremail }}</p>
+        </div>
+    </nav>
+
+
+    <div class="right-container">
+
+        <main>
+            {% block content %} {% endblock content %}
+        </main>
+
+
+        <div class="footer">
+            <br>
+            <div class="link-container">
+                <a href=""><i class="fab fa-youtube-square" aria-hidden="true"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+                <a href=""><i class='fab fa-discord'></i></a>
+            </div>
+            <p>contact@e-sportsindia.in</p>
+            <p id="copyrighttext">Copyrights 2020 - All Rights Reserved e-Sportsindia.in</p>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/tm.js' %}"></script>
+</body>
+<script>
+    var toggle = 0;
+
+    function togglenav() {
+        var nav = document.getElementById('navBar')
+        if (toggle == 0) {
+            nav.style.display = "block";
+            toggle++;
+        } else {
+            toggle--;
+            nav.style.display = "none";
+        }
+    }
+</script>
+
+</html>

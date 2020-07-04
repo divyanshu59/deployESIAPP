@@ -1,0 +1,11 @@
+{% extends 'registration/base.html' %}
+{% load static %}
+
+{% block content %}
+<p style="text-align: center;font-family: roboto,sans;font-size: 1.5rem;padding-top: 1rem;">Register</p>
+<form action="" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button class="main-btn">Continue</button>
+</form>
+{% endblock content %}

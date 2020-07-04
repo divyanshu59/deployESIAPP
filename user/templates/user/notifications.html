@@ -1,0 +1,27 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<div class="heading-container">
+    <h1 id="profile-heading">Notifications</h1>
+</div>
+
+<div class="profile-container">
+    <div class="notification-heading">
+        <p>Notifications</p>
+        <h1>{{ desc }}</h1>
+    </div>
+ {% for notification in notify %}
+    <div class="notification-container">
+       <div class="pic-notify">
+          <img src="{{ notification.icon }}" alt="pic" width="150px" height="150px">
+       </div>
+       <div class="notification-detail">
+         <p>{{ notification.header }}</p>
+         <p id="yellow-text">{{ notification.body }}</p>
+         <p id="red-text">{{ notification.footer }}</p>
+       </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock content %}

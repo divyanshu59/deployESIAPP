@@ -1,0 +1,600 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: roboto, sans;
+    margin: 0px;
+    padding: 0px;
+    background-image: url('dashboardbg.png');
+    background-size: 100% 100%;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+}
+
+.dark {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+nav {
+    height: 100vh;
+    width: 25%;
+    background-image: url('banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    z-index: 2000;
+}
+
+.nav-links {
+    margin-top: 10px;
+    height: auto;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: roboto;
+    font-size: 1.2rem;
+    display: block;
+    border-radius: 4px 0px 0px 4px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    display: block;
+    padding: 4px 0px 4px 10px;
+}
+
+ul li:hover a {
+    background-color: white;
+    color: black;
+}
+
+.userinfo-container {
+    width: 100%;
+    background-color: white;
+    height: 250px;
+    text-align: center;
+    position: relative;
+    clip-path: polygon(50% 0, 100% 15%, 100% 99%, 0 100%, 0 15%);
+}
+
+#username {
+    position: relative;
+    top: 30px;
+}
+
+#useremail {
+    position: relative;
+    top: 30px;
+}
+
+.right-container {
+    width: 75%;
+    float: right;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+}
+
+.right-container main {
+    min-height: 75vh;
+}
+
+
+/* for the dashboard home */
+
+.heading-container h1 {
+    color: white;
+    Font-Family: Rock Salt, cursive;
+    Font-Style: Regular;
+    Font-Size: 50px;
+    text-align: center;
+}
+
+#profile-heading {
+    color: white;
+    Font-Family: Rock Salt, cursive;
+    Font-Style: Regular;
+    Font-Size: 35px;
+    text-align: center;
+}
+
+.profile-container {
+    width: 962px;
+    height: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    margin: 2rem auto;
+}
+
+.profile-pic {
+    width: 250px;
+    border-radius: 100px;
+    padding: 0px;
+    padding-top: 70px;
+    margin: 0px auto;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-user {
+    width: 800px;
+    height: 250px;
+    background-color: #7ED8FF;
+    Font-Family: Rock Salt;
+    Font-Style: Regular;
+    text-align: center;
+    font-size: 33px;
+}
+
+.form-user {
+    width: 800px;
+    height: auto;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.input-userForm {
+    width: 90%;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: none;
+    margin-top: 1rem;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.user-address {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 800px;
+    grid-gap: 20px;
+    height: 300px;
+    margin-top: 30px;
+}
+
+.adCard {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
+    padding: 0px 40px 0px 40px;
+}
+
+.adCard h1 {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: light;
+    padding-top: 20px;
+    letter-spacing: 0.155em;
+    color: rgb(34, 33, 33);
+    margin-bottom: 2rem;
+}
+
+.adCard h2 {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: light;
+    letter-spacing: 0.155em;
+    color: rgb(34, 33, 33);
+    font-size: 30px;
+    text-align: left;
+}
+
+.adCard p {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: light;
+    letter-spacing: 0.155em;
+    color: rgb(34, 33, 33);
+    font-size: 20px;
+    text-align: left;
+}
+
+
+/*for user profile*/
+
+#updateBtn {
+    background-color: #ffffff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    display: block;
+    margin-top: 20px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    margin-left: 360px;
+}
+
+
+/*notifications page */
+
+.notification-heading {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+}
+
+.notification-heading p {
+    font-family: roboto, cursive;
+    text-align: center;
+    padding-top: 14px;
+    font-weight: lighter;
+    font-size: 2rem;
+}
+
+.notification-heading h1 {
+    color: white;
+    text-align: left;
+}
+
+.notification-container {
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.notification-detail {
+    text-align: center;
+    padding: 0px 40px;
+}
+
+.notification-detail p {
+    font-size: 1.5rem;
+    font-family: roboto, cursive;
+    line-height: 2rem;
+}
+
+.pic-notify img {
+    margin-left: 50px;
+}
+
+#red-text {
+    color: rgb(253, 45, 45);
+}
+
+#yellow-text {
+    color: rgb(255, 241, 38);
+}
+
+
+/*css for ranking page*/
+
+.ranking-tables {
+    width: 100%;
+    padding: 20px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 10px;
+}
+
+.scrim1,
+.scrim2,
+.scrim3 {
+    min-height: 350px;
+    width: 90%;
+    background-color: whitesmoke;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.scrim1,
+.scrim2,
+.scrim3 p {
+    text-align: center;
+    font-family: roboto, cursive;
+    font-weight: lighter;
+    font-size: 1.4rem;
+    padding: 15px 0px;
+}
+
+.ranking-tables table {
+    width: 100%;
+    font-family: roboto, cursive;
+    background-color: gainsboro;
+    border-radius: 10px;
+}
+
+.ranking-tables table tr th {
+    font-size: 1rem;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.ranking-tables table tr td {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+#team {
+    width: 40%;
+}
+
+#rank {
+    width: 10%;
+}
+
+.week-year {
+    width: 100%;
+    min-height: 120px;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.week-year h2 {
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: lighter;
+    color: grey;
+}
+
+.week-year h2 select {
+    padding: 10px;
+    font-size: 18px;
+    font-family: roboto, cursive;
+    background-color: rgba(255, 238, 5, 0.952);
+    color: black;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    margin-top: -20px;
+    width: 200px;
+}
+
+.filter-container {
+    width: 100%;
+    height: 60px;
+    background-color: gold;
+}
+
+.filter-container p {
+    color: rgb(32, 30, 30);
+    font-weight: lighter;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 25px;
+}
+
+
+/*css for practice Scrims */
+
+.form-299 {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.form-299 p {
+    text-align: center;
+    font-size: 2rem;
+    font-family: Rock Salt;
+    font-weight: lighter;
+}
+
+#small-txt {
+    font-size: 1rem;
+    margin: 1.4rem 0px;
+    font-family: Roboto;
+}
+
+.imgg {
+    width: 450px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    font-family: Roboto;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    margin: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.form-299 form button {
+    margin: 1.5rem 0px;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 28px;
+    background-color: #FDC603;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+header {
+    background-color: black;
+    padding: 10px;
+    position: sticky;
+    top: 0px;
+    display: none;
+}
+
+header button {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+header button i {
+    font-size: 30px;
+}
+
+.profilefix {
+    display: none;
+}
+
+.user-address-mob {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        width: 100%;
+        text-align: center;
+        display: none;
+        position: fixed;
+        z-index: +1;
+    }
+    .nav-links ul {
+        padding-inline-start: 0px;
+        margin-block-start: 0;
+        margin-block-end: 0em;
+    }
+    nav img {
+        height: auto;
+        width: auto;
+    }
+    .userinfo-container {
+        width: 100%;
+        background-color: white;
+        height: 250px;
+        position: fixed;
+        text-align: center;
+        clip-path: polygon(50% 0, 100% 15%, 100% 99%, 0 100%, 0 15%);
+    }
+    .userinfo-container #username {
+        position: relative;
+        top: 30px;
+        left: unset;
+    }
+    .userinfo-container #useremail {
+        position: relative;
+        top: 30px;
+        left: unset;
+    }
+    .right-container {
+        width: 100%;
+        float: none;
+        margin: 0px;
+        padding: 0px;
+        background-color: rgba(0, 0, 0, 0.6);
+        box-sizing: border-box;
+    }
+    .heading-container h1 {
+        color: white;
+        Font-Family: Rock Salt, cursive;
+        Font-Style: Regular;
+        Font-Size: 25px !important;
+        text-align: center;
+    }
+    header {
+        display: block;
+        z-index: +2;
+    }
+    .profile-container {
+        width: 90%;
+    }
+    .profile-heading {
+        font-size: 30px !important;
+    }
+    .form-299 {
+        padding: 0px !important;
+    }
+    .profile-container p {
+        font-size: 25px;
+    }
+    #mainareanofplus {
+        padding: 5px !important;
+    }
+    .input-userForm {
+        width: auto !important;
+    }
+    .pic-notify img {
+        margin-left: 0px;
+        width: 100%;
+    }
+    .notification-container {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 3fr;
+        border: none !important;
+    }
+    #updateBtn {
+        background-color: #ffffff;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        display: block;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .user-address {
+        display: block;
+        width: auto;
+        grid-gap: 20px;
+        height: 300px;
+        margin-top: 30px;
+    }
+    .form-user {
+        width: 100%;
+    }
+    .adCard {
+        width: 70%;
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .user-address {
+        display: none;
+    }
+    .user-address-mob {
+        display: block;
+    }
+    .ranking-tables {
+        width: 100%;
+        padding: 0px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 10px;
+    }
+    .scrim3 {
+        margin: 0px auto;
+        margin-top: 20px;
+    }
+    .week-year {
+        width: 100%;
+        min-height: 120px;
+        background-color: whitesmoke;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .footer #copyrighttext {
+        font-size: 12px;
+    }
+}
